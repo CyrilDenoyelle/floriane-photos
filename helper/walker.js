@@ -1,8 +1,9 @@
 const fs = require('fs');
 
-module.exports = (dir) => {
+module.exports = (dir, dirname) => {
     const done = (error) => {
         if (error) {
+            console.log()
             throw error;
         } else {
             // console.log('-------------------------------------------------------------');
@@ -37,7 +38,7 @@ module.exports = (dir) => {
                 } else {
                     // do stuff to file here
                     // console.log(stat);
-                    allFilesPaths.push(__dirname + file);
+                    allFilesPaths.push(dirname + file);
                     next();
                 }
             });

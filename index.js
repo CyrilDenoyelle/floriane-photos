@@ -3,7 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 8000
 
 const walker = require('./helper/walker.js');
-const imgsUrls = walker('./public/imgs');
+const imgsUrls = walker('./public/imgs', __dirname);
 
 // console.log(imgsUrls);
 
