@@ -3,7 +3,7 @@ const fs = require('fs');
 module.exports = (dir, dirname) => {
     const done = (error) => {
         if (error) {
-            console.log()
+            console.log(error)
             throw error;
         } else {
             // console.log('-------------------------------------------------------------');
@@ -21,24 +21,23 @@ module.exports = (dir, dirname) => {
         let i = 0;
 
         (function next() {
-            let file = list[i++];
+            let filePath = list[i++];
 
-            if (!file) {
+            if (!filePath) {
                 return done(null);
             }
 
-            file = dir + '/' + file;
-
-            fs.stat(file, function (error, stat) {
+            filePath = dir.slice(1) + '/' + filePath;
+            fs.stat(filePath, function (error, stat) {
 
                 if (stat && stat.isDirectory()) {
-                    walk(file, function (error) {
+                    walk(filePath, function (error) {
                         next();
                     });
                 } else {
-                    // do stuff to file here
+                    // do stuff to filePath here
                     // console.log(stat);
-                    allFilesPaths.push(dirname + file);
+                    allFilesPaths.push(filePath);
                     next();
                 }
             });
