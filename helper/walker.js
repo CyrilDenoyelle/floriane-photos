@@ -37,7 +37,7 @@ module.exports = (dir) => {
                 } else {
                     // do stuff to file here
                     // console.log(stat);
-                    allFilesPaths.push(file);
+                    allFilesPaths.push(__dirname + file);
                     next();
                 }
             });
